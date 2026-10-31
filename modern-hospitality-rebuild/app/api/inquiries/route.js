@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';
+export async function POST(req){try{const data=await req.json();if(!data.name||!data.email||!data.phone)return NextResponse.json({error:'Please complete the required fields.'},{status:400});const payload={...data,createdAt:new Date().toISOString(),type:'website-enquiry'};console.log('NEW MODERN HOSPITALITY ENQUIRY',JSON.stringify(payload));return NextResponse.json({ok:true,message:'Enquiry received'});}catch{return NextResponse.json({error:'Invalid request'},{status:400});}}
